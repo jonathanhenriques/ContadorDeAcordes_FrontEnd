@@ -1,0 +1,23 @@
+<main class="home-wrapper">
+
+  <header>
+    <h1>Escolha a música:</h1>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nome da Música</th>
+      </tr>
+      <tr *ngFor="let musica of listaDeMusicas">
+        <td >{{ musica.id }}</td>
+        <td [routerLink]="['/usuario-edit', musica.id]">{{ musica.nome }}</td>
+
+      </tr>
+    </table>
+
+  </header>
+
+
+
+
+</main>
