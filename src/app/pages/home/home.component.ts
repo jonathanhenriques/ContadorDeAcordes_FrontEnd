@@ -42,6 +42,19 @@ export class HomeComponent implements OnInit{
     )
   }
 
+  excluir(event: Event, id: number) {
+    event.stopPropagation();
+    this.musicaService.deleteMusica(id).subscribe(() => {
+      console.log('Excluído com sucesso!');
+      this.listaDeMusicas = this.listaDeMusicas.filter(musica => musica.id !== id);
+    }, error => {
+      console.error('Erro ao excluir música', error);
+    });
+  }
+
+
+
+
   navigateToEdit(Id: number) {
     this.router.navigate(['/acordes', Id]);
   }

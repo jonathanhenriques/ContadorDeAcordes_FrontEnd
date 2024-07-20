@@ -24,4 +24,12 @@ export class MusicasService {
     return this.http.post<Musica>(`http://localhost:8080/musicas`, musica)
   }
 
+  deleteMusica(id: number) {
+    return this.http.delete<string>(`http://localhost:8080/musicas/${id}`)
+  }
+
+ 
+
+
+
 }

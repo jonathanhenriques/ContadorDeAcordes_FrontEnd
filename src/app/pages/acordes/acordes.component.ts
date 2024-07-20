@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { concatMap, delay, expand, of, repeat, take } from 'rxjs';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
-import { Acorde } from '../../entidades/Acorde';
+// import { Acorde } from '../../entidades/Acorde';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Acorde } from '../../entidades/types/Acorde.type';
 
 @Component({
   selector: 'app-acordes',

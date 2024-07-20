@@ -1,4 +1,6 @@
-import { Acorde } from "./Acorde";
+// import { Acorde } from "./Acorde";
+
+import { Acorde } from "./types/Acorde.type";
 
 export class Musica{
   public id: number

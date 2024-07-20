@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Musica } from '../../entidades/Musica';
 import { AcordesService } from '../../services/acordes.service';
-import { Acorde } from '../../entidades/Acorde';
+// import { Acorde } from '../../entidades/Acorde';
 import { MusicasService } from '../../services/musicas.service';
 import { Router } from '@angular/router';
+import { Acorde } from '../../entidades/types/Acorde.type';
 
 @Component({
   selector: 'app-cadastro',

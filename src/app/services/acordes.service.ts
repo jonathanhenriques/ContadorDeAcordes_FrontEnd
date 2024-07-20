@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Acorde } from '../entidades/Acorde';
+// import { Acorde } from '../entidades/Acorde';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Acorde } from '../entidades/types/Acorde.type';
 
 @Injectable({
   providedIn: 'root'

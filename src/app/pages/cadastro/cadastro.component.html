@@ -24,7 +24,7 @@
 
   <div class="container-botoes">
     <button (click)="guardaListaAcordes(acorde)" *ngFor="let acorde of listaDeAcordes" class="acorde-botoes">
-      {{ acorde.nome }}
+      {{ acorde.letra }}
     </button>
   </div>
 
@@ -32,7 +32,7 @@
     <h3 class="container-salvos">Acordes Salvos:</h3>
     <ul class="lista-acordes">
       <li *ngFor="let acorde of listaDeAcordesParaSalvar">
-        {{ acorde.nome }}
+        {{ acorde.letra }}
       </li>
     </ul>
     <div class="container-remover-ultimo">
