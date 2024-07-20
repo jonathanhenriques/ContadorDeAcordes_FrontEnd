@@ -1,5 +1,14 @@
-<div class="container-botao" *ngIf="!showContent">
-  <button class="fonte-botao" (click)="comecar()">Começar</button>
+<div *ngIf="!showContent">
+  <div class="container-botao">
+    <button class="fonte-botao" (click)="comecar()">Começar</button>
+  </div>
+  <div class="container-input">
+    <h3>Insira a velocidade da música</h3>
+    <input class="fonte-input" type="text" name="valorritmo" [(ngModel)]="valorRitmo" placeholder="Insira os segundos do ritmo:" />
+  </div>
+  <div class="container-botao-voltar">
+    <button class="fonte-botao-voltar" (click)="encerrar()">Voltar</button>
+  </div>
 </div>
 
 <div *ngIf="showContent">

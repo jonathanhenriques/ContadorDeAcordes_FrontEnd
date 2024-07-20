@@ -1,0 +1,120 @@
+/* Define box-sizing globalmente para todos os elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container-nome {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Cor do texto */
+}
+
+.container-salvos {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Cor do texto */
+}
+
+.container-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  margin: 20px 0;
+}
+
+.acorde-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Ajusta a largura do input */
+}
+
+.acorde-salvar {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.acorde-salvar:hover {
+  // background-color: darken(var(--primary-color), 10%);
+}
+
+.container-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.acorde-botoes {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.acorde-botoes:hover {
+  background-color: darken(#007bff, 10%);
+}
+
+.container-botao-voltar {
+  display: flex;
+  flex-wrap: wrap;
+  // margin-right: 20px;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.fonte-botao-voltar {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fonte-botao-voltar:hover {
+  background-color: darken(#f44336, 10%);
+}
+
+.lista-acordes {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.lista-acordes li {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

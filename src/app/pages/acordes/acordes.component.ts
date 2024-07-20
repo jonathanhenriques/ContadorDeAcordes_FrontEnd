@@ -5,11 +5,12 @@ import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
 import { Acorde } from '../../entidades/Acorde';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-acordes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './acordes.component.html',
   styleUrl: './acordes.component.scss'
 })
@@ -24,6 +25,7 @@ export class AcordesComponent implements OnInit{
   acordeAtual: string = 'C';
   nomeAcordeAtual: string = '';
   displayTime: number = 0; // Tempo em milissegundos (2 segundos)
+  valorRitmo: number = 0; // Variável para armazenar o valor do input
 
 
 
@@ -55,6 +57,8 @@ export class AcordesComponent implements OnInit{
 
 
 
+
+
   displayWords() {
     of(...this.listaDeAcordes).pipe(
       concatMap(word =>
@@ -74,11 +78,14 @@ export class AcordesComponent implements OnInit{
 
   comecar() {
     this.showContent = true;
-    this.displayTime = 2000;
+    this.displayTime = this.valorRitmo*1000;
     this.displayWords();
   }
 
 
+  encerrar(){
+    this.router.navigate(['/']); // Redireciona para a tela de home
+  }
 
 
 }

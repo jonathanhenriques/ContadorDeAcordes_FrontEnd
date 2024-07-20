@@ -1,0 +1,35 @@
+
+<div class="container-botao-voltar" >
+  <button class="fonte-botao-voltar" (click)="encerrar()">Cancelar</button>
+  <p class="container-nome">Insira nome da Música:</p>
+
+</div>
+
+<div class="container-input">
+
+  <input class="acorde-input" type="text" name="nomeMusica" [(ngModel)]="nomeMusica" value="insira Nome:" />
+  <button class="acorde-salvar" (click)="salvar()">Salvar</button>
+
+</div>
+
+
+
+
+  <div class="container-botoes">
+    <button (click)="guardaListaAcordes(acorde)" *ngFor="let acorde of listaDeAcordes" class="acorde-botoes">
+      {{ acorde.nome }}
+    </button>
+  </div>
+
+  <div>
+    <h3 class="container-salvos">Acordes Salvos:</h3>
+    <ul class="lista-acordes">
+      <li *ngFor="let acorde of listaDeAcordesParaSalvar">
+        {{ acorde.nome }}
+      </li>
+    </ul>
+  </div>
+
+
+
+

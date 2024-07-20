@@ -20,5 +20,8 @@ export class MusicasService {
     return this.http.get<Musica>(`http://localhost:8080/musicas/${id}`)
   }
 
+  postMusica(musica: Musica): Observable<Musica>{
+    return this.http.post<Musica>(`http://localhost:8080/musicas`, musica)
+  }
 
 }

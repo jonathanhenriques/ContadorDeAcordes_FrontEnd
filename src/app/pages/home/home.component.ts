@@ -46,6 +46,11 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/acordes', Id]);
   }
 
+  navigateToCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+
+
 
 
 }

@@ -3,6 +3,7 @@
   <header>
     <h1>Escolha a música:</h1>
 
+
     <table>
       <tr>
         <th>Id</th>
@@ -11,12 +12,15 @@
       <tr *ngFor="let musica of listaDeMusicas" (click)="navigateToEdit(musica.id)" style="cursor: pointer;">
         <td>{{ musica.id }}</td>
         <td>{{ musica.nome }}</td>
-        <td><button><a [routerLink]="['/acordes',musica.id]">Navegar</a ></button></td>
+        <td><button><a [routerLink]="['/acordes',musica.id]">Praticar</a ></button></td>
       </tr>
 
     </table>
-    <button><a [routerLink]="['/acordes',1]">Navegar</a>
-    </button>
+
+    <div class="container-botao">
+      <button ><a class="fonte-botao" [routerLink]="['/cadastro']">Cadastrar Música</a ></button>
+    </div>
+
 
   </header>
 
