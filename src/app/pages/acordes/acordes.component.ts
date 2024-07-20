@@ -4,11 +4,12 @@ import { concatMap, delay, expand, of, take } from 'rxjs';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
 import { Acorde } from '../../entidades/Acorde';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-acordes',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './acordes.component.html',
   styleUrl: './acordes.component.scss'
 })
@@ -18,10 +19,11 @@ export class AcordesComponent implements OnInit{
   musica: Musica;
   listaDeAcordes: Acorde[];
 
+  showContent: boolean = false; // Controla a exibição do conteúdo
   words: string[] = ['palavra1', 'palavra2', 'palavra3', 'palavra4'];
   acordeAtual: string = 'C';
   nomeAcordeAtual: string = '';
-  displayTime: number = 20; // Tempo em milissegundos (2 segundos)
+  displayTime: number = 0; // Tempo em milissegundos (2 segundos)
 
 
 
@@ -68,6 +70,17 @@ export class AcordesComponent implements OnInit{
       }
     });
   }
+
+
+  comecar() {
+    this.showContent = true;
+    this.displayTime = 2000;
+    this.displayWords();
+  }
+
+
+
+
 }
 
 

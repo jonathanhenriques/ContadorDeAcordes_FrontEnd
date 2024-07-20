@@ -1,11 +1,14 @@
-<p>acordes works!</p>
-<div class="container">
-  <h1 class="fonte">{{ acordeAtual }}</h1>
-
+<div class="container-botao" *ngIf="!showContent">
+  <button class="fonte-botao" (click)="comecar()">Começar</button>
 </div>
-<div class="container-acorde">
-  <h3 class="fonte-acorde">DDDDDDDDDDD{{nomeAcordeAtual}}</h3>
+
+<div *ngIf="showContent">
+  <p>acordes works!</p>
+  <div class="container">
+    <h1 class="fonte">{{ acordeAtual }}</h1>
+  </div>
+  <div class="container-acorde">
+    <h3 class="fonte-acorde">{{ nomeAcordeAtual }}</h3>
+  </div>
+  <h1>{{ idMusica }}</h1>
 </div>
-<h1>{{idMusica}}</h1>
-
-
