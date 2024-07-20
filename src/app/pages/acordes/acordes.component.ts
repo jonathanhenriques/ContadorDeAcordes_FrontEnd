@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatMap, delay, expand, of, take } from 'rxjs';
+import { concatMap, delay, expand, of, repeat, take } from 'rxjs';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
 import { Acorde } from '../../entidades/Acorde';
@@ -25,7 +25,9 @@ export class AcordesComponent implements OnInit{
   acordeAtual: string = 'C';
   nomeAcordeAtual: string = '';
   displayTime: number = 0; // Tempo em milissegundos (2 segundos)
-  valorRitmo: number = 0; // Variável para armazenar o valor do input
+  valorRitmo: number; // Variável para armazenar o valor do input
+
+  repetirSequencia: boolean = true;
 
 
 
@@ -56,17 +58,35 @@ export class AcordesComponent implements OnInit{
   }
 
 
+  repetir() {
+
+    this.showContent = true;
+    this.displayTime = this.valorRitmo*1000;
+    this.displayWordsRepetir();
+
+  }
 
 
 
   displayWords() {
     of(...this.listaDeAcordes).pipe(
       concatMap(word =>
-        of(word).pipe(
-          expand((current, index) => index < word.repeticoes - 1 ? of(current).pipe(delay(this.displayTime)) : of(null)),
-          take(word.repeticoes)
-        )
+        of(word).pipe(delay(this.displayTime))
       )
+    ).subscribe(word => {
+      if (word) {
+        this.acordeAtual = word.letra;
+        this.nomeAcordeAtual = word.nome;
+      }
+    });
+  }
+
+  displayWordsRepetir() {
+    of(...this.listaDeAcordes).pipe(
+      concatMap(word =>
+        of(word).pipe(delay(this.displayTime))
+      ),
+      repeat() // Faz com que o Observable repita infinitamente
     ).subscribe(word => {
       if (word) {
         this.acordeAtual = word.letra;

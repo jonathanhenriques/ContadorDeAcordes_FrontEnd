@@ -1,13 +1,20 @@
 
-<div class="container-botao-voltar" >
+<div class="container-superior">
   <button class="fonte-botao-voltar" (click)="encerrar()">Cancelar</button>
-  <p class="container-nome">Insira nome da Música:</p>
-
 </div>
+
+<p class="container-nome">Insira nome da Música:</p>
 
 <div class="container-input">
 
-  <input class="acorde-input" type="text" name="nomeMusica" [(ngModel)]="nomeMusica" value="insira Nome:" />
+  <input
+    class="acorde-input"
+    [ngClass]="{'input-error': isNomeMusicaInvalid}"
+    type="text"
+    name="nomeMusica"
+    [(ngModel)]="nomeMusica"
+    value="insira Nome:"
+  />
   <button class="acorde-salvar" (click)="salvar()">Salvar</button>
 
 </div>
@@ -28,6 +35,9 @@
         {{ acorde.nome }}
       </li>
     </ul>
+    <div class="container-remover-ultimo">
+      <button class="remover-ultimo" (click)="removerUltimoAcorde()">Remover Último</button>
+    </div>
   </div>
 
 

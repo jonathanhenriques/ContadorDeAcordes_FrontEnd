@@ -1,41 +1,71 @@
-.container {
+.container-letraacorde {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
-  height: 60vh;
-  background-color: #f0f0f0; /* Cor de fundo suave */
+  // margin-top: 60px;
+  // height: 60vh;
+  height: 400px; /* Substitua por altura real da imagem */
+  // background-color: #ca4510; /* Cor de fundo suave */
   border-radius: 10px; /* Bordas arredondadas */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.fonte {
-  font-size: 500px;
-  color: #333; /* Cor do texto */
+.fonte-letraacorde {
+  font-size: 350px;
+  color: #000000; /* Cor do texto */
   text-align: center;
+  // margin: 0px;
+  // margin-top: 20px;
 }
 
-.container-acorde {
+// main {
+//   // height: 700px;
+//   // background-color: #000; /* Fundo preto para a tela */
+//   color: #33169c; /* Cor do texto padrão para branco */
+//   margin: 0; /* Remove margens padrão */
+//   padding: 0; /* Remove preenchimento padrão */
+//   font-family: Arial, sans-serif; /* Fonte padrão para toda a aplicação */
+// }
+
+// body {
+//   background-color: #000; /* Fundo preto para a tela */
+// }
+
+
+
+
+
+.container-nomeacorde {
   display: flex;
   justify-content: center;
   align-items: center; /* Centraliza verticalmente */
   margin: 20px 0; /* Espaçamento superior e inferior */
 }
 
-.fonte-acorde {
+.fonte-nomeacorde {
   font-size: 40px;
-  color: #555; /* Cor do texto */
+  color: #e72566; /* Cor do texto */
   text-align: center;
 }
 
-.container-botao, .container-botao-voltar {
+.container-ritmo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0 5px 0; /* Espaçamento superior reduzido */
+  color: #e72566;
+}
+
+.container-botao-comecar {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px; /* Espaçamento superior reduzido */
+  gap: 10px;
 }
 
-.fonte-botao, .fonte-botao-voltar {
+
+.fonte-botao-comecar{
   font-size: 20px;
   background-color: #007bff; /* Cor de fundo do botão */
   color: white; /* Cor do texto do botão */
@@ -45,6 +75,40 @@
   cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
   transition: background-color 0.3s; /* Transição suave de cor */
 }
+.fonte-botao-repetir {
+  font-size: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px; /* Bordas arredondadas do botão */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  transition: background-color 0.3s; /* Transição suave de cor */
+}
+
+
+
+.h1-ritmo {
+  font-size: 20px;
+  color: #000000;
+}
+
+
+
+.fonte-botao-voltar {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px 0 0 10px;
+  // margin-left: 10px;
+}
+
+
 
 .fonte-botao:hover, .fonte-botao-voltar:hover {
   background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */

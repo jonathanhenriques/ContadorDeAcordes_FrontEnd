@@ -24,7 +24,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1px;
+  gap: 25px;
   margin: 20px 0;
 }
 
@@ -37,6 +37,12 @@
   width: 200px; /* Ajusta a largura do input */
 }
 
+.input-error {
+  border: 1px solid red;
+  background-color: #ffdddd;
+}
+
+
 .acorde-salvar {
   background-color: var(--primary-color);
   color: #fff;
@@ -48,9 +54,6 @@
   transition: background-color 0.3s;
 }
 
-.acorde-salvar:hover {
-  // background-color: darken(var(--primary-color), 10%);
-}
 
 .container-botoes {
   display: flex;
@@ -61,12 +64,21 @@
 }
 
 .acorde-botoes {
+  // background-color: #007bff;
+  // color: #fff;
+  // border: none;
+  // padding: 10px 15px;
+  // border-radius: 5px;
+  // font-size: 14px;
+  // cursor: pointer;
+  // transition: background-color 0.3s;
+
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -87,12 +99,13 @@
   background-color: #f44336;
   color: #fff;
   border: none;
-  padding: 8px 15px;
-  margin-top: 10px;
+  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin: 10px 0 0 10px;
+  // margin-left: 10px;
 }
 
 .fonte-botao-voltar:hover {
@@ -104,17 +117,45 @@
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
-  margin: 0;
+  // margin: 0 0 0 5px;
+  margin-left: 12px;
   gap: 10px;
-  max-height: 60vh;
+  max-height: 30vh;
   overflow-y: auto;
 }
 
 .lista-acordes li {
   background: #fff;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+}
+
+
+
+.container-remover-ultimo {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.remover-ultimo {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 300px; /* Ajusta a largura máxima do botão */
+}
+
+.remover-ultimo:hover {
+  background-color: darken(#f44336, 10%);
 }

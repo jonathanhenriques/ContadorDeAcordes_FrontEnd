@@ -19,7 +19,8 @@ export class CadastroComponent implements OnInit{
   nomeMusica: string = "";
   acorde: Acorde;
   listaDeAcordes: Acorde[] = []
-  listaDeAcordesParaSalvar : Acorde[] = [];
+  listaDeAcordesParaSalvar : Acorde[] = []
+  isNomeMusicaInvalid: boolean = false;
 
   constructor(
     private acordesService: AcordesService,
@@ -64,7 +65,29 @@ export class CadastroComponent implements OnInit{
     console.log('Lista de acordes para salvar:', this.listaDeAcordesParaSalvar);
   }
 
+  removerUltimoAcorde(): void {
+    if (this.listaDeAcordesParaSalvar.length > 0) {
+      this.listaDeAcordesParaSalvar.pop();
+    }
+  }
+
   salvar(): void {
+
+    this.isNomeMusicaInvalid = !this.nomeMusica || this.nomeMusica.trim() === "";
+    if (this.isNomeMusicaInvalid) {
+      return;
+    }
+
+    if (!this.nomeMusica || this.nomeMusica.trim() === "") {
+      // Se nomeMusica for null, undefined ou uma string vazia (após remover espaços em branco)
+      return;
+    }
+
+    if (!this.listaDeAcordesParaSalvar || this.listaDeAcordesParaSalvar.length === 0) {
+      return;
+    }
+
+
     const novaMusica = new Musica();
     novaMusica.nome = this.nomeMusica; // Defina o nome da música conforme necessário
     novaMusica.acordes = this.listaDeAcordesParaSalvar;
