@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SimboloMusicaComponent } from '../../icons/simbolo-musica/simbolo-musica.component';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -23,7 +21,9 @@ export class HomeComponent implements OnInit{
 
   listaDeMusicas: Musica[]
 
-  constructor(private musicaService: MusicasService){}
+  constructor(private musicaService: MusicasService,
+    private router: Router
+  ){}
 
 
   ngOnInit(): void {
@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit{
         }
       }
     )
+  }
+
+  navigateToEdit(Id: number) {
+    this.router.navigate(['/acordes', Id]);
   }
 
 

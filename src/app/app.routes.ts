@@ -7,6 +7,6 @@ export const routes: Routes = [
     path: "",
     component: HomeComponent
   },
-  { path: 'acordes/:idmusica',
+  { path: 'acordes/:id',
     component: AcordesComponent}
 ];

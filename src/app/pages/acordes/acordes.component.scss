@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  height: 60vh; /* Altura total da viewport */
+}
+
+.fonte {
+  font-size: 500px;
+  text-align: center; /* Centraliza o texto dentro do h1 */
+}
+
+.container-acorde {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  // height: 80vh; /* Altura total da viewport */
+}
+
+.fonte-acorde {
+  font-size: 40px;
+  text-align: center; /* Centraliza o texto dentro do h1 */
+}
