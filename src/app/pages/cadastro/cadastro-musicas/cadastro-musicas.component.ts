@@ -1,21 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Musica } from '../../entidades/Musica';
-import { AcordesService } from '../../services/acordes.service';
+import { Musica } from '../../../entidades/Musica';
+import { AcordesService } from '../../../services/acordes.service';
 // import { Acorde } from '../../entidades/Acorde';
-import { MusicasService } from '../../services/musicas.service';
+import { MusicasService } from '../../../services/musicas.service';
 import { Router } from '@angular/router';
-import { Acorde } from '../../entidades/types/Acorde.type';
+import { Acorde } from '../../../entidades/types/Acorde.type';
 
 @Component({
-  selector: 'app-cadastro',
+  selector: 'app-cadastro-musicas',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss'
+  templateUrl: './cadastro-musicas.component.html',
+  styleUrl: './cadastro-musicas.component.scss'
 })
-export class CadastroComponent implements OnInit{
+export class CadastroMusicasComponent implements OnInit{
 
   nomeMusica: string = "";
   acorde: Acorde;
@@ -64,6 +64,14 @@ export class CadastroComponent implements OnInit{
     this.listaDeAcordesParaSalvar.push(acorde);
     console.log('Acorde salvo:', acorde);
     console.log('Lista de acordes para salvar:', this.listaDeAcordesParaSalvar);
+  }
+  removerAcorde(acorde: Acorde): void{
+    if (this.listaDeAcordesParaSalvar.length > 0){
+      const index = this.listaDeAcordesParaSalvar.findIndex(a => a === acorde);
+      if (index !== -1) {
+        this.listaDeAcordesParaSalvar.splice(index, 1);
+      }
+    }
   }
 
   removerUltimoAcorde(): void {

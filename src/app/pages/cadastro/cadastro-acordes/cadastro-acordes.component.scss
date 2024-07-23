@@ -1,0 +1,246 @@
+/* Define box-sizing globalmente para todos os elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container-nome {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Cor do texto */
+}
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh; /* Ajuste para preencher a altura total da viewport */
+  padding: 34px 0;
+  background-color: #f9f9f9; /* Adiciona uma cor de fundo leve */
+}
+
+header {
+  max-width: 800px; /* Aumenta a largura máxima para uma melhor leitura */
+  text-align: center;
+  background-color: #ffffff; /* Adiciona um fundo branco para o header */
+  padding: 20px;
+  border-radius: 8px; /* Adiciona bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 28px; /* Aumenta o tamanho da fonte */
+  margin-bottom: 20px; /* Aumenta o espaço abaixo do título */
+}
+
+p {
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+table {
+  width: 100%;
+  margin-bottom: 30px; /* Espaçamento abaixo da tabela */
+  border-collapse: collapse; /* Remove o espaçamento entre as células da tabela */
+}
+
+th, td {
+  padding: 12px; /* Adiciona espaçamento interno às células */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+th {
+  background-color: #f0f0f0; /* Adiciona um fundo leve aos cabeçalhos */
+  border-bottom: 2px solid #ddd; /* Adiciona uma borda inferior aos cabeçalhos */
+}
+
+td {
+  border-bottom: 1px solid #ddd; /* Adiciona uma borda inferior às células */
+}
+
+tr:hover {
+  background-color: #f9f9f9; /* Destaca a linha ao passar o mouse */
+}
+
+.container-botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px; /* Ajusta o espaçamento superior */
+}
+
+button {
+  background-color: var(--primary-color); /* Adiciona cor de fundo ao botão */
+  border: none; /* Remove a borda padrão do botão */
+  color: #ffffff; /* Define a cor do texto no botão */
+  font-size: 18px; /* Ajusta o tamanho da fonte do botão */
+  padding: 10px 20px; /* Adiciona espaçamento interno ao botão */
+  border-radius: 5px; /* Adiciona bordas arredondadas ao botão */
+  cursor: pointer; /* Altera o cursor para uma mão ao passar sobre o botão */
+  transition: background-color 0.3s; /* Adiciona uma transição suave ao passar o mouse */
+}
+
+button:hover {
+  // background-color: darken(var(--primary-color), 10%); /* Escurece a cor de fundo ao passar o mouse */
+}
+
+a {
+  text-decoration: none; /* Remove o sublinhado dos links */
+  color: #ffffff; /* Define a cor do texto dos links dentro do botão */
+}
+
+.input-error {
+  border: 1px solid red;
+  background-color: #ffdddd;
+}
+
+.container-salvos {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Cor do texto */
+}
+
+.container-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 20px 0;
+}
+
+.acorde-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Ajusta a largura do input */
+}
+
+.input-error {
+  border: 1px solid red;
+  background-color: #ffdddd;
+}
+
+
+.acorde-salvar {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.container-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.acorde-botoes {
+  // background-color: #007bff;
+  // color: #fff;
+  // border: none;
+  // padding: 10px 15px;
+  // border-radius: 5px;
+  // font-size: 14px;
+  // cursor: pointer;
+  // transition: background-color 0.3s;
+
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.acorde-botoes:hover {
+  background-color: darken(#007bff, 10%);
+}
+
+.container-botao-voltar {
+  display: flex;
+  flex-wrap: wrap;
+  // margin-right: 20px;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.fonte-botao-voltar {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px 0 0 10px;
+  // margin-left: 10px;
+}
+
+.fonte-botao-voltar:hover {
+  background-color: darken(#f44336, 10%);
+}
+
+.lista-acordes {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  // margin: 0 0 0 5px;
+  margin-left: 12px;
+  gap: 10px;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+.lista-acordes li {
+  background: #fff;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+}
+
+
+
+.container-remover-ultimo {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.remover-ultimo {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 300px; /* Ajusta a largura máxima do botão */
+}
+
+.remover-ultimo:hover {
+  background-color: darken(#f44336, 10%);
+}

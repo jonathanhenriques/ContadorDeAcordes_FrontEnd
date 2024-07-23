@@ -24,4 +24,8 @@ export class AcordesService {
     return this.http.post<Acorde>(`http://localhost:8080/acordes`, acorde)
   }
 
+  deleteAcorde(id: number) {
+    return this.http.delete<string>(`http://localhost:8080/acordes/${id}`)
+  }
+
 }

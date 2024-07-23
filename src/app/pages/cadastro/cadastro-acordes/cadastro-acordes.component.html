@@ -1,0 +1,50 @@
+<div class="container-superior">
+  <button class="fonte-botao-voltar" (click)="encerrar()">Cancelar</button>
+</div>
+
+<p class="container-nome">Insira nome do Acorde:</p>
+
+<div class="container-input">
+
+  <div>
+    Nome:
+    <input
+    class="acorde-input"
+    [ngClass]="{'input-error': isNomeAcordeInvalid}"
+    type="text"
+    name="nomeAcorde"
+    (input)="nomeAcordeInput($event)"
+  /></div>
+  <div>
+  Letra:
+  <input
+    class="acorde-input"
+    [ngClass]="{'input-error': isLetraAcordeInvalid}"
+    type="text"
+    name="letraAcorde"
+    (input)="letraAcordeInput($event)"
+  />
+
+
+
+
+<header>
+  <table>
+   <thead>
+    <tr>
+      <th>Id</th>
+      <th>Acorde</th>
+      <th>Letra</th>
+      <th>Excluir</th>
+    </tr>
+   </thead>
+    <tbody>
+      <tr *ngFor="let musica of listaDeAcordes; let i = index" >
+        <td>{{ musica.id }}</td>
+        <td>{{ musica.nome }}</td>
+        <td>{{ musica.letra }}</td>
+        <td><button (click)="excluir($event, musica.id)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+</header>
