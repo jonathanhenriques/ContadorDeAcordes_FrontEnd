@@ -71,6 +71,17 @@ button {
   transition: background-color 0.3s; /* Adiciona uma transição suave ao passar o mouse */
 }
 
+.botao-excluir {
+  background-color: var(--bg-excluir); /* Adiciona cor de fundo ao botão */
+  border: none; /* Remove a borda padrão do botão */
+  color: #ffffff; /* Define a cor do texto no botão */
+  font-size: 18px; /* Ajusta o tamanho da fonte do botão */
+  padding: 10px 20px; /* Adiciona espaçamento interno ao botão */
+  border-radius: 5px; /* Adiciona bordas arredondadas ao botão */
+  cursor: pointer; /* Altera o cursor para uma mão ao passar sobre o botão */
+  transition: background-color 0.3s; /* Adiciona uma transição suave ao passar o mouse */
+}
+
 button:hover {
   // background-color: darken(var(--primary-color), 10%); /* Escurece a cor de fundo ao passar o mouse */
 }

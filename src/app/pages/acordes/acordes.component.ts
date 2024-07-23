@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concatMap, delay, expand, of, repeat, take } from 'rxjs';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
-// import { Acorde } from '../../entidades/Acorde';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Acorde } from '../../entidades/types/Acorde.type';
 
@@ -26,7 +25,10 @@ export class AcordesComponent implements OnInit{
   acordeAtual: string = 'C';
   nomeAcordeAtual: string = '';
   displayTime: number = 0; // Tempo em milissegundos (2 segundos)
-  valorRitmo: number; // Variável para armazenar o valor do input
+  valorRitmo: string = ''; // Variável para armazenar o valor do input
+  isvelocidadeMusicaInvalid: boolean = false;
+  bpmInput: number;
+  interromper: boolean = false;
 
   repetirSequencia: boolean = true;
 
@@ -35,8 +37,15 @@ export class AcordesComponent implements OnInit{
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private musicaService: MusicasService
+    private musicaService: MusicasService,
+    private location: Location
+
   ) { }
+
+
+  // ngOnDestroy(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   ngOnInit(): void {
     this.idMusica = this.route.snapshot.params['id'];
@@ -49,7 +58,7 @@ export class AcordesComponent implements OnInit{
       (resp: Musica) => {
         this.musica = resp;
         this.listaDeAcordes = resp.acordes;
-        this.displayWords();
+        // this.displayWords();
       }, (erro) =>{
         if(erro.status == 500){
           alert('Problema na requisição')
@@ -58,13 +67,56 @@ export class AcordesComponent implements OnInit{
     )
   }
 
+  validacaoDeInput(): boolean {
+
+    this.isvelocidadeMusicaInvalid = !this.valorRitmo || this.valorRitmo.trim() === "";
+    if (this.isvelocidadeMusicaInvalid) {
+      return false;
+    }
+    console.log(this.isvelocidadeMusicaInvalid)
+
+    if (!this.valorRitmo || this.valorRitmo.trim() === "") {
+      // Se nomeMusica for null, undefined ou uma string vazia (após remover espaços em branco)
+      return false;
+    }
+
+    return true;
+    console.log(this.valorRitmo)
+  }
+
 
   repetir() {
 
+    if (!this.validacaoDeInput())
+      return
+
     this.showContent = true;
-    this.displayTime = this.valorRitmo*1000;
+    // this.displayTime = Number(this.valorRitmo) * 1000;
+    // console.log('repetir - valorRitmo -' + this.valorRitmo)
+    // const bpm = parseFloat(this.valorRitmo);
+    // console.log('1repetir - bpm -', bpm )
+    // this.displayTime = (60 / bpm) * 1000 + (60 / bpm) * (1000 / 16); // Compensar atraso adicional
+    // console.log('repetir - bpm -', bpm +'display - ' + this.displayTime)
+
+
+    const bpm = this.bpmInput;
+    console.log('bpm: '+bpm)
+    let dynamicDisplayTime = Number(this.valorRitmo); // Variável para armazenar o displayTime dinâmico
+
+    // Exemplo de uso
+    this.displayTime = this.calculateDisplayTime(dynamicDisplayTime, bpm); // Adiciona 500 milissegundos ao displayTime
+    console.log(`displayTime dinâmico: ${dynamicDisplayTime}`); // Exibe o displayTime dinâmico
+    console.log('displayTime : ' + this.displayTime)
+
+
     this.displayWordsRepetir();
 
+  }
+
+  calculateDisplayTime(dynamicFactor: number, bpm: number) {
+    // Fórmula original com adição de um fator dinâmico
+    let dynamicDisplayTime = 0
+    return  dynamicDisplayTime = (60 / bpm) * 1000 + (60 / bpm) * (1000 / 16) + (dynamicFactor * 1000);
   }
 
 
@@ -78,34 +130,59 @@ export class AcordesComponent implements OnInit{
       if (word) {
         this.acordeAtual = word.letra;
         this.nomeAcordeAtual = word.nome;
+        console.log('displayWords - ', this.displayTime)
       }
     });
   }
 
+
   displayWordsRepetir() {
-    of(...this.listaDeAcordes).pipe(
-      concatMap(word =>
-        of(word).pipe(delay(this.displayTime))
-      ),
-      repeat() // Faz com que o Observable repita infinitamente
-    ).subscribe(word => {
-      if (word) {
-        this.acordeAtual = word.letra;
-        this.nomeAcordeAtual = word.nome;
-      }
-    });
+    console.log('dwr showContent: ' + this.showContent)
+    if (this.showContent) {
+      of(...this.listaDeAcordes).pipe(
+        concatMap(word =>
+          of(word).pipe(delay(this.displayTime))
+        ),
+        repeat() // Faz com que o Observable repita infinitamente
+      ).subscribe(word => {
+        if (word) {
+          this.acordeAtual = word.letra;
+          this.nomeAcordeAtual = word.nome;
+          console.log('nao saiu dwr')
+          console.log('displayWordsRepeat - ', this.displayTime)
+          if (this.interromper){
+            console.log('interromper: ')
+          }
+
+        }
+      });
+    }
+
   }
 
 
   comecar() {
+
+    if (!this.validacaoDeInput())
+      return
+
+
     this.showContent = true;
-    this.displayTime = this.valorRitmo*1000;
+    this.displayTime = parseFloat(this.valorRitmo) * 1000;
+    console.log('comecar - ', this.displayTime)
     this.displayWords();
   }
 
 
   encerrar(){
+
     this.router.navigate(['/']); // Redireciona para a tela de home
+  }
+
+  voltar(){
+    console.log("voltou")
+    this.interromper = true;
+    this.showContent = false
   }
 
 

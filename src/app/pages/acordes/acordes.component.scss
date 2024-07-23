@@ -39,13 +39,14 @@
   display: flex;
   justify-content: center;
   align-items: center; /* Centraliza verticalmente */
-  margin: 20px 0; /* Espaçamento superior e inferior */
+  margin: 20px 0px 0px 0px; /* Espaçamento superior e inferior */
 }
 
 .fonte-nomeacorde {
   font-size: 40px;
   color: #e72566; /* Cor do texto */
   text-align: center;
+  // margin-bottom: 0cm;
 }
 
 .container-ritmo {
@@ -85,6 +86,16 @@
   cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
   transition: background-color 0.3s; /* Transição suave de cor */
 }
+
+.setinha-voltar {
+  margin-top: 15px;
+}
+
+.input-error {
+  border: 1px solid red;
+  background-color: #ffdddd;
+}
+
 
 
 
@@ -129,8 +140,16 @@
   padding: 10px; /* Preenchimento interno do input */
   border: 1px solid #ccc; /* Borda do input */
   border-radius: 5px; /* Bordas arredondadas do input */
-  margin-bottom: 20px; /* Espaçamento inferior reduzido */
+  margin-bottom: 3px; /* Espaçamento inferior reduzido */
   width: 80%; /* Largura do input */
+}
+
+small {
+  margin-left: 40px;
+
+    filter: opacity(50%); /* 50% de transparência */
+
+
 }
 
 h3 {

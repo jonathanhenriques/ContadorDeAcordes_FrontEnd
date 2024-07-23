@@ -1,26 +1,50 @@
-.
+
 
 
   <div *ngIf="!showContent">
-    <div class="container-botao-voltar">
-      <button class="fonte-botao-voltar" (click)="encerrar()">Voltar</button>
+    <div class="container-superior">
+      <svg (click)="encerrar()" xmlns="http://www.w3.org/2000/svg" width="60" height="35" fill="currentColor" class="bi bi-arrow-left setinha-voltar" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
+       </svg>
     </div>
 
     <div class="container-input">
       <h3>Insira a velocidade da música</h3>
-      <input class="fonte-input" type="text" name="valorritmo" [(ngModel)]="valorRitmo" placeholder="Insira os segundos do ritmo:" />
+      <input
+        class="fonte-input"
+        [ngClass]="{'input-error': isvelocidadeMusicaInvalid}"
+        type="text"
+        name="valorritmo"
+        [(ngModel)]="valorRitmo"
+        placeholder="insira Velocidade:"
+      />
+
+      <input
+        class="fonte-input"
+        [ngClass]="{'input-error': isvelocidadeMusicaInvalid}"
+        type="text"
+        name="bpmInput"
+        [(ngModel)]="bpmInput"
+        placeholder="insira bpm:"
+      />
+
     </div>
+    <small >*Quanto maior o valor, mais lento.</small>
     <div class="container-botao-comecar">
-      <button class="fonte-botao-comecar" (click)="comecar()">Começar</button>
-      <button class="fonte-botao-repetir" (click)="repetir()">Repetir</button>
+      <button class="fonte-botao-comecar" (click)="repetir()">Começar</button>
+      <!-- <button class="fonte-botao-repetir" (click)="repetir()">Repetir</button> -->
     </div>
 
   </div>
 
-  <div *ngIf="showContent">
+  <div style="width: auto;" *ngIf="showContent">
 
-      <div class="container-botao-voltar">
-        <button class="fonte-botao-voltar" (click)="encerrar()">Voltar</button>
+
+
+      <div class="container-superior">
+        <svg (click)="voltar()" xmlns="http://www.w3.org/2000/svg" width="60" height="35" fill="currentColor" class="bi bi-arrow-left setinha-voltar" viewBox="0 0 16 16">
+           <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708.708L2.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
+         </svg>
       </div>
 
       <div class="container-letraacorde">
