@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatMap, delay, expand, of, repeat, take } from 'rxjs';
+import { concatMap, delay, Subject, of, repeat, take } from 'rxjs';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Acorde } from '../../entidades/types/Acorde.type';
+import {repeatWhen, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-acordes',
@@ -15,6 +16,9 @@ import { Acorde } from '../../entidades/types/Acorde.type';
   styleUrl: './acordes.component.scss'
 })
 export class AcordesComponent implements OnInit{
+
+  stopSignal = new Subject<void>();
+  repeatSignal = new Subject<void>();
 
   idMusica: number = 0;
   musica: Musica;
@@ -90,7 +94,9 @@ export class AcordesComponent implements OnInit{
     if (!this.validacaoDeInput())
       return
 
-    this.showContent = true;
+    // this.showContent = true;
+    this.startRepetir()
+
     // this.displayTime = Number(this.valorRitmo) * 1000;
     // console.log('repetir - valorRitmo -' + this.valorRitmo)
     // const bpm = parseFloat(this.valorRitmo);
@@ -134,32 +140,39 @@ export class AcordesComponent implements OnInit{
       }
     });
   }
-
-
   displayWordsRepetir() {
-    console.log('dwr showContent: ' + this.showContent)
     if (this.showContent) {
       of(...this.listaDeAcordes).pipe(
         concatMap(word =>
           of(word).pipe(delay(this.displayTime))
         ),
-        repeat() // Faz com que o Observable repita infinitamente
-      ).subscribe(word => {
-        if (word) {
-          this.acordeAtual = word.letra;
-          this.nomeAcordeAtual = word.nome;
-          console.log('nao saiu dwr')
-          console.log('displayWordsRepeat - ', this.displayTime)
-          if (this.interromper){
-            console.log('interromper: ')
+        repeat(), // Repetir automaticamente
+        takeUntil(this.stopSignal) // Parar quando stopSignal emitir
+      ).subscribe({
+        next: word => {
+          if (word) {
+            this.acordeAtual = word.letra;
+            this.nomeAcordeAtual = word.nome;
+            console.log('displayWordsRepeat - ', this.displayTime);
           }
-
+        },
+        complete: () => {
+          console.log('Repetição interrompida');
         }
       });
     }
-
   }
 
+  startRepetir() {
+    this.showContent = true;
+    // this.displayWordsRepetir(); // Iniciar a repetição
+  }
+  stopRepetir() {
+    this.showContent = false;
+    this.stopSignal.next(); // Emite o sinal de parada
+    this.stopSignal.complete(); // Completa o Subject para evitar vazamentos de memória
+    this.stopSignal = new Subject<void>(); // Reinicia o Subject para futuras execuções
+  }
 
   comecar() {
 
@@ -182,7 +195,9 @@ export class AcordesComponent implements OnInit{
   voltar(){
     console.log("voltou")
     this.interromper = true;
-    this.showContent = false
+
+    // this.showContent = false
+    this.stopRepetir()
   }
 
 
