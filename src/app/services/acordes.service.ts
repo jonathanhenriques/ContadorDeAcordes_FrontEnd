@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Acorde } from '../entidades/types/Acorde.type';
+import { env } from '../../environments/environment.development'
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,19 @@ export class AcordesService {
 
 
   getAll(): Observable<Acorde[]> {
-    return this.http.get<Acorde[]>('http://localhost:8080/acordes')
+    return this.http.get<Acorde[]>(`${env.apiUrl}/acordes`)
   }
 
   getByIdAcorde(id: number): Observable<Acorde>{
-    return this.http.get<Acorde>(`http://localhost:8080/acorde/${id}`)
+    return this.http.get<Acorde>(`${env.apiUrl}/acordes/${id}`)
   }
 
   postAcorde(acorde: Acorde): Observable<Acorde>{
-    return this.http.post<Acorde>(`http://localhost:8080/acordes`, acorde)
+    return this.http.post<Acorde>(`${env.apiUrl}/acordes`, acorde)
   }
 
   deleteAcorde(id: number) {
-    return this.http.delete<string>(`http://localhost:8080/acordes/${id}`)
+    return this.http.delete<string>(`${env.apiUrl}/acordes/${id}`)
   }
 
 }

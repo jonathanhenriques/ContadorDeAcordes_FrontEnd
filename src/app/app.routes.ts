@@ -9,10 +9,6 @@ export const routes: Routes = [
     path: "",
     component: HomeComponent
   },
-  {
-    path: "home",
-    component: HomeComponent
-  },
   { path: 'acordes/:id',
     component: AcordesComponent},
   {
@@ -23,6 +19,6 @@ export const routes: Routes = [
     path: "cadastro-acordes",
     component: CadastroAcordesComponent
   },
-  
+
 
 ];

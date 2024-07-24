@@ -1,3 +1,3 @@
-export const environment = {
-  apiUrl: "http://localhost:8080"
+export const env = {
+  apiUrl: "https://contadordeacordes-backend.onrender.com"
 };

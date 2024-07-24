@@ -104,6 +104,6 @@ export class CadastroAcordesComponent implements OnInit {
   }
 
   encerrar() {
-    this.router.navigate(['/home']); // Redireciona para a tela de home
+    this.router.navigate(['/']); // Redireciona para a tela de home
   }
 }

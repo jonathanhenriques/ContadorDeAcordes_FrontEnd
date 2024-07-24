@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Musica } from '../entidades/Musica';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { env } from '../../environments/environment.development'
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +13,22 @@ export class MusicasService {
 
 
   getAll(): Observable<Musica[]> {
-    return this.http.get<Musica[]>('http://localhost:8080/musicas')
+    return this.http.get<Musica[]>(`${env.apiUrl}/musicas`)
   }
 
   getByIdMusica(id: number): Observable<Musica>{
-    return this.http.get<Musica>(`http://localhost:8080/musicas/${id}`)
+    return this.http.get<Musica>(`${env.apiUrl}/musicas/${id}`)
   }
 
   postMusica(musica: Musica): Observable<Musica>{
-    return this.http.post<Musica>(`http://localhost:8080/musicas`, musica)
+    return this.http.post<Musica>(`${env.apiUrl}/musicas`, musica)
   }
 
   deleteMusica(id: number) {
-    return this.http.delete<string>(`http://localhost:8080/musicas/${id}`)
+    return this.http.delete<string>(`${env.apiUrl}/musicas/${id}`)
   }
 
- 
+
 
 
 
