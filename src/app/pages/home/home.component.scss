@@ -57,7 +57,21 @@ tr:hover {
   justify-content: center;
   align-items: center;
   margin-top: 30px; /* Ajusta o espaçamento superior */
-  gap: 10px;
+  gap: 20px;
+
+}
+
+.fonte-botao {
+  font-size: 18px; /* Tamanho de fonte menor */
+  padding: 5px 2px;
+  max-width: 18vh;
+
+}
+
+.fonte-a {
+  font-size: 18px;
+  // padding: 20px 20px
+
 }
 
 button {
@@ -90,3 +104,5 @@ a {
   text-decoration: none; /* Remove o sublinhado dos links */
   color: #ffffff; /* Define a cor do texto dos links dentro do botão */
 }
+
+
