@@ -106,7 +106,7 @@ export class AcordesComponent implements OnInit{
 
 
     // const bpm = this.bpmInput;
-    const bpm = 120;
+    const bpm = 2230;
     console.log('bpm: '+bpm)
     let dynamicDisplayTime = Number(this.valorRitmo); // Variável para armazenar o displayTime dinâmico
 
