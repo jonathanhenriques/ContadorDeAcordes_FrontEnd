@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatMap, delay, Subject, of, repeat, take } from 'rxjs';
+import { concatMap, delay, Subject, of, repeat, take, concat } from 'rxjs';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
 import { CommonModule, Location } from '@angular/common';
@@ -141,18 +141,27 @@ export class AcordesComponent implements OnInit{
       }
     });
   }
+  
   displayWordsRepetir() {
-    // this.acordeAtual = '2';
     if (this.showContent) {
-      this.acordeAtual = this.listaDeAcordes[0].letra
-      this.nomeAcordeAtual = this.listaDeAcordes[0].nome
-      // this.acordeAtual = this.listaDeAcordes[0].letra
-      // this.nomeAcordeAtual = this.listaDeAcordes[0].nome
-      of(...this.listaDeAcordes).pipe(
-        concatMap(word =>
-          of(word).pipe(delay(this.displayTime))
-        ),
-        repeat(), // Repetir automaticamente
+      this.acordeAtual = '!'
+
+      const novosValores: Acorde[] = [
+        {id: 0, letra: '1', nome: '' },
+        {id: 0, letra: '2', nome: '' },
+        {id: 0, letra: '3', nome: '' }
+      ];
+  
+      const novosValoresObservable = of(...novosValores).pipe(
+        concatMap(word => of(word).pipe(delay(1000)))
+      );
+  
+      const listaDeAcordesObservable = of(...this.listaDeAcordes).pipe(
+        concatMap(word => of(word).pipe(delay(this.displayTime))),
+        repeat()
+      );
+  
+      concat(novosValoresObservable, listaDeAcordesObservable).pipe(
         takeUntil(this.stopSignal) // Parar quando stopSignal emitir
       ).subscribe({
         next: word => {
@@ -168,6 +177,7 @@ export class AcordesComponent implements OnInit{
       });
     }
   }
+  
 
   startRepetir() {
     this.showContent = true;
