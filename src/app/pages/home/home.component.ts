@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SimboloMusicaComponent } from '../../icons/simbolo-musica/simbolo-musica.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { MusicasService } from '../../services/musicas.service';
 import { Musica } from '../../entidades/Musica';
@@ -9,7 +8,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [
-    SimboloMusicaComponent,
     RouterModule,
     CommonModule
 

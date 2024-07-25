@@ -25,8 +25,8 @@ export class AcordesComponent implements OnInit{
   listaDeAcordes: Acorde[];
 
   showContent: boolean = false; // Controla a exibição do conteúdo
-  words: string[] = ['palavra1', 'palavra2', 'palavra3', 'palavra4'];
-  acordeAtual: string = 'C';
+  // words: string[] = ['palavra1', 'palavra2', 'palavra3', 'palavra4'];
+  acordeAtual: string = '';
   nomeAcordeAtual: string = '';
   displayTime: number = 0; // Tempo em milissegundos (2 segundos)
   valorRitmo: string = ''; // Variável para armazenar o valor do input
@@ -142,7 +142,12 @@ export class AcordesComponent implements OnInit{
     });
   }
   displayWordsRepetir() {
+    // this.acordeAtual = '2';
     if (this.showContent) {
+      this.acordeAtual = this.listaDeAcordes[0].letra
+      this.nomeAcordeAtual = this.listaDeAcordes[0].nome
+      // this.acordeAtual = this.listaDeAcordes[0].letra
+      // this.nomeAcordeAtual = this.listaDeAcordes[0].nome
       of(...this.listaDeAcordes).pipe(
         concatMap(word =>
           of(word).pipe(delay(this.displayTime))
